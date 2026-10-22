@@ -291,6 +291,10 @@
           <span slot="signed-out-avatar" class="visually-hidden">{{ 'customer.log_in' | t }}</span>
         </shopify-account>
       {%- endif -%}
+      <a href="{{ routes.search_url }}?view=wishlist" class="header__icon header__icon--wishlist link focus-inset" aria-label="Wishlist">
+        {{ 'icon-wishlist.svg' | inline_asset_content }}
+        <span class="wishlist-count" data-wishlist-count hidden>0</span>
+      </a>
 
       {%- for block in section.blocks -%}
         {%- case block.type -%}

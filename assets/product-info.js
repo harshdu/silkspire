@@ -256,6 +256,16 @@ if (!customElements.get('product-info')) {
       }
 
       updateMedia(html, variantFeaturedMediaId) {
+        const colorGallery = html.querySelector('media-gallery[data-color-filter="true"]');
+        if (colorGallery) {
+          this.querySelector('media-gallery')?.replaceWith(colorGallery);
+          const firstMedia = colorGallery.querySelector('[data-media-id]');
+          if (firstMedia) colorGallery.setActiveMedia?.(firstMedia.dataset.mediaId, false);
+          const modalContent = this.productModal?.querySelector('.product-media-modal__content');
+          const newModalContent = html.querySelector('product-modal .product-media-modal__content');
+          if (modalContent && newModalContent) modalContent.innerHTML = newModalContent.innerHTML;
+          return;
+        }
         if (!variantFeaturedMediaId) return;
 
         const mediaGallerySource = this.querySelector('media-gallery ul');

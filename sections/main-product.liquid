@@ -194,10 +194,43 @@
                   </p>
                 {%- when 'description' -%}
                   {%- if product.description != blank -%}
-                    <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
-                      {{ product.description }}
+                    <div class="product__accordion accordion product-details-dropdown quick-add-hidden" {{ block.shopify_attributes }}>
+                      <details id="ProductDetails-{{ section.id }}-{{ block.id }}">
+                        <summary>
+                          <h2 class="h4 accordion__title">Product details</h2>
+                          <span class="product-details-dropdown__icon" aria-hidden="true"></span>
+                        </summary>
+                        <div class="product__description accordion__content rte">
+                          {{ product.description }}
+                        </div>
+                      </details>
                     </div>
                   {%- endif -%}
+                  {%- assign info_titles = 'Get it delivered in 4-5 days|Return & Exchange|Cash On Delivery term' | split: '|' -%}
+                  {%- for info_title in info_titles -%}
+                    <div class="product__accordion accordion product-details-dropdown quick-add-hidden">
+                      <details id="ProductInfo-{{ section.id }}-{{ block.id }}-{{ forloop.index }}">
+                        <summary>
+                          <h2 class="h4 accordion__title">{{ info_title }}</h2>
+                          <span class="product-details-dropdown__icon" aria-hidden="true"></span>
+                        </summary>
+                        <div class="accordion__content rte">
+                          {%- case forloop.index -%}
+                            {%- when 1 -%}
+                              {{ block.settings.delivery_content }}
+                            {%- when 2 -%}
+                              {%- if block.settings.returns_content != blank -%}
+                                {{ block.settings.returns_content }}
+                              {%- elsif shop.refund_policy != blank -%}
+                                {{ shop.refund_policy.body }}
+                              {%- endif -%}
+                            {%- when 3 -%}
+                              {{ block.settings.cod_content }}
+                          {%- endcase -%}
+                        </div>
+                      </details>
+                    </div>
+                  {%- endfor -%}
                 {%- when 'sku' -%}
                   <p
                     class="product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
@@ -294,6 +327,9 @@
                           </span>
                         </button>
                       </quantity-input>
+                      <button type="button" class="wishlist-toggle" data-wishlist-toggle data-product-id="{{ product.id }}" data-product-handle="{{ product.handle }}" data-product-title="{{ product.title | escape }}" data-product-url="{{ product.url }}" data-product-image="{{ product.featured_image | image_url: width: 600 }}" data-product-price="{{ product.price | money | escape }}" aria-pressed="false" aria-label="Add to wishlist">
+                        {{ 'icon-wishlist.svg' | inline_asset_content }}
+                      </button>
                       {%- liquid
                         assign volume_pricing_array = product.selected_or_first_available_variant.quantity_price_breaks | sort: 'quantity' | reverse
                         assign current_qty_for_volume_pricing = cart_qty | plus: product.selected_or_first_available_variant.quantity_rule.min
@@ -943,7 +979,26 @@
     {
       "type": "description",
       "name": "t:sections.main-product.blocks.description.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "delivery_content",
+          "label": "Delivery details",
+          "default": "<p>Get it delivered in 4-5 days.</p>"
+        },
+        {
+          "type": "richtext",
+          "id": "returns_content",
+          "label": "Return & Exchange details",
+          "info": "Leave blank to use the store refund policy."
+        },
+        {
+          "type": "richtext",
+          "id": "cod_content",
+          "label": "Cash On Delivery terms"
+        }
+      ]
     },
     {
       "type": "share",

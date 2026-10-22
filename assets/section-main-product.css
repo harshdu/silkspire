@@ -367,6 +367,42 @@ a.product__text {
   max-width: 44rem;
 }
 
+.product-form__buttons--inline {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  align-items:start;
+}
+.product-form__buttons--inline > .product-form__submit {
+  width:100%; min-width:0; min-height:48px; margin:0; padding:10px 12px;
+}
+.product-form__buttons--inline > .shopify-payment-button { min-width:0; margin:0; }
+.product-form__buttons--inline .shopify-payment-button__button { width:100%; min-height:48px; margin:0; padding:10px 12px; }
+.product-form__buttons--inline shopify-accelerated-checkout { --shopify-accelerated-checkout-button-block-size:48px; --shopify-accelerated-checkout-button-border-radius:16px; }
+body.silkspire-glass .product-form__buttons--inline :is(.product-form__submit, .shopify-payment-button__button--unbranded) {
+  box-sizing:border-box;
+  height:48px;
+  min-height:48px;
+  border:1px solid rgba(255,255,255,.46);
+  border-radius:16px;
+  background:linear-gradient(135deg,rgba(111,78,55,.88),rgba(111,78,55,.64));
+  color:#E5E4E2;
+  font-family:var(--font-body-family);
+  font-size:15px;
+  font-weight:500;
+  line-height:1.2;
+  letter-spacing:.03em;
+  box-shadow:0 9px 24px rgba(111,78,55,.2),inset 0 1px 0 rgba(255,255,255,.4);
+}
+body.silkspire-glass .product-form__buttons--inline :is(.product-form__submit, .shopify-payment-button__button--unbranded)::before,
+body.silkspire-glass .product-form__buttons--inline :is(.product-form__submit, .shopify-payment-button__button--unbranded)::after { display:none; }
+body.silkspire-glass .product-form__buttons--inline :is(.product-form__submit, .shopify-payment-button__button--unbranded):hover:not([disabled]):not([aria-disabled='true']) { background:#6F4E37; }
+@media(max-width:400px) {
+  .product-form__buttons--inline { gap:8px; }
+  .product-form__buttons--inline > .product-form__submit,
+  .product-form__buttons--inline .shopify-payment-button__button { font-size:13px; padding-left:8px; padding-right:8px; }
+}
+
 .product--no-media .product__info-container > modal-opener {
   display: block;
   text-align: center;

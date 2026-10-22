@@ -156,7 +156,7 @@
       },
       "scheme-2": {
         "settings": {
-          "background": "#E6E0F0",
+          "background": "#E5E4E2",
           "background_gradient": "",
           "text": "#6F4E37",
           "button": "#6F4E37",
@@ -170,9 +170,9 @@
           "background": "#6F4E37",
           "background_gradient": "",
           "text": "#E5E4E2",
-          "button": "#E6E0F0",
+          "button": "#E5E4E2",
           "button_label": "#6F4E37",
-          "secondary_button_label": "#E6E0F0",
+          "secondary_button_label": "#E5E4E2",
           "shadow": "#6F4E37"
         }
       },
@@ -181,15 +181,15 @@
           "background": "#6F4E37",
           "background_gradient": "",
           "text": "#E5E4E2",
-          "button": "#E6E0F0",
+          "button": "#E5E4E2",
           "button_label": "#6F4E37",
-          "secondary_button_label": "#E6E0F0",
+          "secondary_button_label": "#E5E4E2",
           "shadow": "#6F4E37"
         }
       },
       "scheme-5": {
         "settings": {
-          "background": "#E6E0F0",
+          "background": "#E5E4E2",
           "background_gradient": "",
           "text": "#6F4E37",
           "button": "#6F4E37",
@@ -218,7 +218,7 @@
         },
         "scheme-2": {
           "settings": {
-            "background": "#E6E0F0",
+            "background": "#E5E4E2",
             "background_gradient": "",
             "text": "#6F4E37",
             "button": "#6F4E37",
@@ -232,9 +232,9 @@
             "background": "#6F4E37",
             "background_gradient": "",
             "text": "#E5E4E2",
-            "button": "#E6E0F0",
+            "button": "#E5E4E2",
             "button_label": "#6F4E37",
-            "secondary_button_label": "#E6E0F0",
+            "secondary_button_label": "#E5E4E2",
             "shadow": "#6F4E37"
           }
         },
@@ -243,15 +243,15 @@
             "background": "#6F4E37",
             "background_gradient": "",
             "text": "#E5E4E2",
-            "button": "#E6E0F0",
+            "button": "#E5E4E2",
             "button_label": "#6F4E37",
-            "secondary_button_label": "#E6E0F0",
+            "secondary_button_label": "#E5E4E2",
             "shadow": "#6F4E37"
           }
         },
         "scheme-5": {
           "settings": {
-            "background": "#E6E0F0",
+            "background": "#E5E4E2",
             "background_gradient": "",
             "text": "#6F4E37",
             "button": "#6F4E37",

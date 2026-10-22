@@ -1,4 +1,4 @@
-.hanging-rail { display:block; padding:52px 0 36px; overflow:hidden; color:var(--rail-ink); background:linear-gradient(145deg,rgba(230,224,240,.48),transparent 65%),var(--rail-background); }
+.hanging-rail { display:block; padding:52px 0 36px; overflow:hidden; color:var(--rail-ink); background:linear-gradient(145deg,rgba(229, 228, 226,.48),transparent 65%),var(--rail-background); }
 .hanging-rail__heading { text-align:center; }
 .hanging-rail__eyebrow { margin:0; font-size:13px; font-weight:600; letter-spacing:.2em; line-height:1.8; }
 .hanging-rail__eyebrow span { margin-left:18px; padding-left:18px; border-left:1px solid rgba(111,78,55,.3); opacity:.65; }
@@ -7,6 +7,9 @@
 .hanging-rail__rack::before { content:""; position:absolute; left:0; right:0; top:10px; height:5px; background:linear-gradient(#b6aca2,#81756a 50%,#cfc9c1); box-shadow:0 3px 4px rgba(111,78,55,.2); }
 .hanging-rail__track { display:flex; gap:clamp(24px,4vw,70px); overflow-x:auto; scroll-snap-type:x mandatory; scrollbar-width:none; padding:0 max(24px,calc((100vw - 1200px)/2)) 25px; overscroll-behavior-x:contain; }
 .hanging-rail__track::-webkit-scrollbar { display:none; }
+.hanging-rail__track.slick-initialized { display:block; overflow:visible; padding:0 0 25px; scroll-snap-type:none; }
+.hanging-rail__track.slick-initialized .slick-list { padding-top:8px !important; padding-bottom:15px !important; }
+.hanging-rail__track.slick-initialized .hanging-rail__item { padding:0 clamp(12px,2vw,32px); box-sizing:border-box; }
 .hanging-rail__item { flex:0 0 clamp(210px,24vw,320px); min-width:0; scroll-snap-align:center; text-align:center; }
 .hanging-rail__swing { transform-origin:50% 12px; padding-top:12px; }
 .hanging-rail[data-sway="true"] .hanging-rail__swing { animation:rail-sway var(--rail-speed,7s) ease-in-out var(--item-delay,0s) infinite alternate; }
@@ -26,11 +29,11 @@
 .hanging-rail__product-name { display:block; color:inherit; font-size:14px; text-decoration:none; margin:23px auto 0; max-width:90%; line-height:1.5; opacity:.7; }
 .hanging-rail__item[data-active] .hanging-rail__product-name { opacity:1; }
 .hanging-rail__navigation { display:flex; justify-content:space-between; pointer-events:none; position:absolute; top:50%; left:18px; right:18px; }
-.hanging-rail__navigation button { display:grid; place-items:center; width:44px; height:44px; border:1px solid rgba(255,255,255,.8); border-radius:50%; color:var(--rail-ink); font-size:23px; background:rgba(230,224,240,.8); backdrop-filter:blur(14px); cursor:pointer; pointer-events:auto; box-shadow:0 5px 18px rgba(111,78,55,.1); }
+.hanging-rail__navigation button { display:grid; place-items:center; width:44px; height:44px; border:1px solid rgba(255,255,255,.8); border-radius:50%; color:var(--rail-ink); font-size:23px; background:rgba(229, 228, 226,.8); backdrop-filter:blur(14px); cursor:pointer; pointer-events:auto; box-shadow:0 5px 18px rgba(111,78,55,.1); }
 .hanging-rail__navigation button:disabled { opacity:.3; cursor:default; }
 .hanging-rail__footer { text-align:center; margin-top:8px; }
 .hanging-rail__selected { min-height:24px; max-width:540px; margin:0 auto 14px; font-weight:600; font-size:17px; }
-.hanging-rail__cta { display:inline-flex; gap:28px; align-items:center; padding:12px 28px; border:1px solid rgba(111,78,55,.25); border-radius:40px; background:rgba(230,224,240,.45); backdrop-filter:blur(12px); color:var(--rail-ink); text-decoration:none; font-size:14px; }
+.hanging-rail__cta { display:inline-flex; gap:28px; align-items:center; padding:12px 28px; border:1px solid rgba(111,78,55,.25); border-radius:40px; background:rgba(229, 228, 226,.45); backdrop-filter:blur(12px); color:var(--rail-ink); text-decoration:none; font-size:14px; }
 .hanging-rail__cta:hover { background:var(--rail-ink); color:#E5E4E2; }
 .hanging-rail__hint { margin:15px 0 0; font-size:11px; letter-spacing:.04em; opacity:.65; }
 @keyframes rail-sway { from { transform:rotate(-1.6deg); } to { transform:rotate(1.6deg); } }
@@ -40,6 +43,8 @@
  .hanging-rail__eyebrow span { margin-left:10px; padding-left:10px; }
  .hanging-rail__item { flex-basis:64vw; }
  .hanging-rail__track { gap:28px; padding-left:18vw; padding-right:18vw; }
+ .hanging-rail__track.slick-initialized { padding-left:0; padding-right:0; }
+ .hanging-rail__track.slick-initialized .hanging-rail__item { padding-left:12px; padding-right:12px; }
  .hanging-rail__hanger { height:75px; }
  .hanging-rail__navigation { left:10px; right:10px; }
  .hanging-rail__navigation button { width:36px; height:36px; }

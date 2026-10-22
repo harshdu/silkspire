@@ -325,6 +325,8 @@
     <script src="{{ 'slick.min.js' | asset_url }}" ></script>
     {{ 'silkspire-palette.css' | asset_url | stylesheet_tag }}
     {{ 'silkspire-glass.css' | asset_url | stylesheet_tag }}
+    {{ 'silkspire-wishlist.css' | asset_url | stylesheet_tag }}
+    <script src="{{ 'silkspire-wishlist.js' | asset_url }}" defer="defer"></script>
   </head>
 
   <body class="silkspire-glass gradient{% if settings.animations_hover_elements != 'none' %} animate--hover-{{ settings.animations_hover_elements }}{% endif %}">

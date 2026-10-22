@@ -9,51 +9,80 @@ if (!customElements.get('hanging-collection-slider')) {
       this.previous = this.querySelector('[data-rail-prev]');
       this.next = this.querySelector('[data-rail-next]');
       if (!this.track || !this.items.length) return;
-      const move = (direction) => {
-        const gap = parseFloat(getComputedStyle(this.track).columnGap) || 0;
-        this.track.scrollBy({ left: direction * (this.items[0].offsetWidth + gap), behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
-      };
-      this.previous.addEventListener('click', () => move(-1), options);
-      this.next.addEventListener('click', () => move(1), options);
-      this.track.addEventListener('scroll', () => {
-        cancelAnimationFrame(this.frame);
-        this.frame = requestAnimationFrame(() => this.update());
-      }, { ...options, passive: true });
+
+      this.addEventListener('click', (event) => {
+        const button = event.target.closest('.hanging-rail__garment');
+        if (!button || (this.slider && !this.slider.slick('getSlick').shouldClick)) return;
+        if (button.hasAttribute('aria-pressed')) {
+          button.setAttribute('aria-pressed', String(button.getAttribute('aria-pressed') !== 'true'));
+        }
+        this.select(button.closest('.hanging-rail__item'));
+      }, options);
       this.items.forEach((item) => {
-        item.querySelector('.hanging-rail__garment').addEventListener('click', (event) => {
-          const button = event.currentTarget;
-          if (button.hasAttribute('aria-pressed')) button.setAttribute('aria-pressed', String(button.getAttribute('aria-pressed') !== 'true'));
-          this.select(item);
-        }, options);
         item.addEventListener('pointerenter', () => this.select(item), options);
         item.addEventListener('focusin', () => this.select(item), options);
       });
-      this.resize = new ResizeObserver(() => this.update());
-      this.resize.observe(this.track);
-      this.update();
+      this.addEventListener('shopify:block:select', (event) => {
+        const index = this.items.indexOf(event.target.closest('.hanging-rail__item'));
+        if (this.slider && index >= 0) this.slider.slick('slickGoTo', index, true);
+      }, options);
+
+      const $ = window.jQuery;
+      if (!$ || !$.fn.slick) {
+        this.previous.disabled = this.next.disabled = true;
+        this.select(this.items[0]);
+        return;
+      }
+      this.slider = $(this.track);
+      this.slider.on('init.hangingRail afterChange.hangingRail reInit.hangingRail breakpoint.hangingRail', (_event, slick) => {
+        this.update(slick);
+      });
+      this.slider.slick({
+        slidesToShow: Math.min(3, this.items.length),
+        slidesToScroll: 1,
+        initialSlide: this.items.length > 2 ? 1 : 0,
+        centerMode: this.items.length > 1,
+        centerPadding: '60px',
+        infinite: this.items.length > 1,
+        arrows: true,
+        prevArrow: $(this.previous),
+        nextArrow: $(this.next),
+        dots: false,
+        speed: matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 550,
+        swipe: true,
+        swipeToSlide: true,
+        draggable: true,
+        touchThreshold: 8,
+        accessibility: true,
+        adaptiveHeight: false,
+        responsive: [
+          { breakpoint: 990, settings: { slidesToShow: Math.min(2, this.items.length), centerPadding: '32px' } },
+          { breakpoint: 750, settings: { slidesToShow: 1, centerPadding: '15%' } }
+        ]
+      });
     }
     select(item) {
+      if (!item) return;
       this.items.forEach((entry) => entry.toggleAttribute('data-active', entry === item));
       this.querySelector('.hanging-rail__selected').textContent = item.dataset.title;
       const link = this.querySelector('[data-rail-product-link]');
       if (link) link.href = item.dataset.url;
     }
-    update() {
-      const bounds = this.track.getBoundingClientRect();
-      const center = bounds.left + bounds.width / 2;
-      const nearest = this.items.reduce((best, item) => {
-        const distance = (element) => { const r = element.getBoundingClientRect(); return Math.abs(r.left + r.width / 2 - center); };
-        return distance(item) < distance(best) ? item : best;
-      }, this.items[0]);
-      this.select(nearest);
-      this.previous.disabled = this.track.scrollLeft <= 2;
-      this.next.disabled = this.track.scrollLeft + this.track.clientWidth >= this.track.scrollWidth - 2;
+    update(slick) {
+      this.select(this.items[slick.currentSlide]);
+      const last = slick.options.centerMode ? slick.slideCount - 1 : Math.max(0, slick.slideCount - slick.options.slidesToShow);
+      this.previous.disabled = !slick.options.infinite && slick.currentSlide <= 0;
+      this.next.disabled = !slick.options.infinite && slick.currentSlide >= last;
+      this.previous.hidden = this.next.hidden = slick.slideCount <= slick.options.slidesToShow;
     }
     disconnectedCallback() {
       this.controller?.abort();
       this.controller = null;
-      this.resize?.disconnect();
-      cancelAnimationFrame(this.frame);
+      if (this.slider) {
+        this.slider.off('.hangingRail');
+        if (this.slider.hasClass('slick-initialized')) this.slider.slick('unslick');
+        this.slider = null;
+      }
     }
   });
 }
