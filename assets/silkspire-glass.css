@@ -168,3 +168,21 @@ body.silkspire-glass footer.footer { background:linear-gradient(135deg,rgba(111,
 @media(max-width:749px) {
   body.silkspire-glass :is(.hanging-rail, .reviews-section, .dwell-shoppable-video-section) { width:calc(100% - 20px); max-width:calc(100% - 20px); margin:20px 10px !important; border-radius:22px; }
 }
+/* Full-width collection and product pages with consistent side gutters. */
+body.silkspire-glass:is(.template-collection, .template-product) #MainContent .page-width {
+  max-width:none;
+  width:100%;
+  box-sizing:border-box;
+  padding-left:15px;
+  padding-right:15px;
+}
+@media(max-width:749px) {
+  body.silkspire-glass.template-product .product__media-wrapper slider-component:not(.thumbnail-slider--no-slide) {
+    margin-left:0;
+    margin-right:0;
+  }
+  body.silkspire-glass.template-product .product__media-list {
+    margin-left:0;
+    width:100%;
+  }
+}
