@@ -8,6 +8,16 @@
   @example
   {% render 'price-facet', filter: filter, id_prefix: 'Filter-', filter_type: 'vertical' %}
 {%- enddoc -%}
+{%- if request.page_type == 'collection' -%}
+  {%- assign range_maximum = filter.range_max | divided_by: 100.0 -%}
+  <silkspire-price-slider class="collection-price-slider" data-max="{{ range_maximum }}" data-currency="{{ cart.currency.iso_code }}">
+    <div class="collection-price-slider__values"><span data-range-low></span><span data-range-high></span></div>
+    <div class="collection-price-slider__track">
+      <input type="range" min="0" max="{{ range_maximum }}" step="0.01" value="{{ filter.min_value.value | default: 0 | divided_by: 100.0 }}" aria-label="Minimum price" data-range-min {% if range_maximum == 0 %}disabled{% endif %}>
+      <input type="range" min="0" max="{{ range_maximum }}" step="0.01" value="{{ filter.max_value.value | default: filter.range_max | divided_by: 100.0 }}" aria-label="Maximum price" data-range-max {% if range_maximum == 0 %}disabled{% endif %}>
+    </div>
+  </silkspire-price-slider>
+{%- endif -%}
 <span class="field-currency">{{ cart.currency.symbol }}</span>
 
 <div class="field">
