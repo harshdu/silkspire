@@ -1,5 +1,11 @@
 {% comment %}theme-check-disable ImgLazyLoading{% endcomment %}
 {{ 'component-collection-hero.css' | asset_url | stylesheet_tag }}
+{{ 'silkspire-collection-layout.css' | asset_url | stylesheet_tag }}
+<nav class="collection-breadcrumb page-width" aria-label="Breadcrumb">
+  <a href="{{ routes.root_url }}">Home</a><span aria-hidden="true">/</span>
+  <a href="{{ routes.all_products_collection_url }}">Shop</a><span aria-hidden="true">/</span>
+  <span aria-current="page">{{ collection.title | escape }}</span>
+</nav>
 
 {%- style -%}
   @media screen and (max-width: 749px) {
