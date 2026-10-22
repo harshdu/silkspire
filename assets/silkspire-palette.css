@@ -1,0 +1,10 @@
+:root {
+  --silkspire-mocha: #6F4E37;
+  --silkspire-silver: #E5E4E2;
+  --silkspire-lavender: #E6E0F0;
+}
+::selection { color: var(--silkspire-silver); background: var(--silkspire-mocha); }
+.silkspire-card .silkspire-card__buy { color: var(--silkspire-silver); background: var(--silkspire-mocha); }
+.silkspire-card .silkspire-card__buy:hover { color: var(--silkspire-mocha); background: var(--silkspire-lavender); }
+.silkspire-card .silkspire-card__cart { color: var(--silkspire-mocha); background: var(--silkspire-lavender); }
+.silkspire-card .silkspire-card__cart:hover { background: var(--silkspire-silver); }

@@ -1,0 +1,127 @@
+/* Shared glass surfaces for Dawn and Silkspire custom sections. */
+body.silkspire-glass {
+  --glass-surface: rgba(245, 242, 247, .67);
+  --glass-line: rgba(255, 255, 255, .68);
+  --glass-shadow: 0 12px 36px rgba(111, 78, 55, .09), inset 0 1px 0 rgba(255, 255, 255, .7);
+  --buttons-radius: 16px;
+  --inputs-radius: 14px;
+  --variant-pills-radius: 24px;
+  background-color: #E5E4E2;
+  background-image: radial-gradient(ellipse at 8% 15%, rgba(230, 224, 240, .98), transparent 48%), radial-gradient(ellipse at 92% 42%, rgba(111, 78, 55, .15), transparent 45%), radial-gradient(ellipse at 45% 90%, rgba(230, 224, 240, .85), transparent 50%);
+  background-attachment: fixed;
+}
+body.silkspire-glass .shopify-section > .gradient,
+body.silkspire-glass collection-component > .gradient,
+body.silkspire-glass .collection-hero,
+body.silkspire-glass .reviews-section,
+body.silkspire-glass .dwell-shoppable-video-section,
+body.silkspire-glass .collections-list { background: transparent; }
+
+/* Keep navigation readable as imagery scrolls behind it. */
+body.silkspire-glass .header-wrapper {
+  background: rgba(229, 228, 226, .72);
+  -webkit-backdrop-filter: blur(22px) saturate(125%);
+  backdrop-filter: blur(22px) saturate(125%);
+  border-bottom: 1px solid var(--glass-line);
+  box-shadow: 0 5px 28px rgba(111, 78, 55, .07);
+}
+body.silkspire-glass .shopify-section .utility-bar { background: rgba(111, 78, 55, .9); color: #E5E4E2; }
+body.silkspire-glass :is(.header__submenu, .menu-drawer, .predictive-search, .search-modal__content, .cart-notification, .drawer__inner, .facets__display, .facets__display-vertical, .mobile-facets__inner, .product-popup-modal__content, .localization-form__list) {
+  background: rgba(241, 237, 244, .94);
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+  border: 1px solid var(--glass-line);
+  box-shadow: var(--glass-shadow);
+  color: #6F4E37;
+}
+body.silkspire-glass :is(.header__submenu, .predictive-search, .cart-notification, .facets__display, .product-popup-modal__content) { border-radius: 20px; }
+
+/* Product, collection, editorial and review surfaces. Images stay crisp. */
+body.silkspire-glass :is(.card--card, .article-card, .blog-articles .article, .collage-card, .multicolumn-card, .image-with-text__content, .rich-text__wrapper, .newsletter__wrapper, .reviews-section__card, .dwell-sv-card, .cart__footer > div, .customer form) {
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-line);
+  border-radius: 22px;
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+}
+body.silkspire-glass :is(.reviews-section__card, .dwell-sv-card) { padding: 14px; }
+body.silkspire-glass :is(.card__inner, .category-image-grid__card, .reviews-section__frame, .dwell-sv-video-box) { border-radius: 18px; overflow: hidden; }
+body.silkspire-glass .reviews-section__frame { background: rgba(230, 224, 240, .5); border: 1px solid var(--glass-line); }
+body.silkspire-glass .dwell-sv-product-card { background: transparent; }
+body.silkspire-glass .collection-block .icon-block { border: 1px solid var(--glass-line); box-shadow: 0 5px 20px rgba(111, 78, 55, .1); border-radius: 50%; overflow: hidden; }
+body.silkspire-glass .category-image-grid__content {
+  margin: 12px;
+  padding: 12px 18px;
+  border: 1px solid var(--glass-line);
+  border-radius: 16px;
+  background: rgba(229, 228, 226, .78);
+  -webkit-backdrop-filter: blur(15px);
+  backdrop-filter: blur(15px);
+}
+body.silkspire-glass .category-image-grid__title { color: #6F4E37; }
+
+/* Reference collection layout keeps two desktop columns and filled images. */
+body.silkspire-glass .silkspire-card {
+  padding: 12px;
+  border: 1px solid var(--glass-line);
+  border-radius: 24px;
+  background: rgba(245, 242, 247, .52);
+  box-shadow: var(--glass-shadow);
+}
+body.silkspire-glass .silkspire-card__stage { border-radius: 18px; border: 1px solid rgba(255, 255, 255, .5); }
+body.silkspire-glass .silkspire-card__thumbnail { border-radius: 12px; border: 1px solid rgba(255, 255, 255, .75); background: rgba(230, 224, 240, .58); }
+body.silkspire-glass .silkspire-card__thumbnail[aria-pressed="true"] { border-color: #6F4E37; }
+body.silkspire-glass .silkspire-card__details {
+  inset: 10px 10px auto;
+  padding: 12px 14px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, .7);
+  background: rgba(235, 231, 239, .85);
+  -webkit-backdrop-filter: blur(16px) saturate(115%);
+  backdrop-filter: blur(16px) saturate(115%);
+}
+body.silkspire-glass .silkspire-card__actions { margin-top: 14px; }
+body.silkspire-glass :is(.button, .shopify-challenge__button, .silkspire-card__buy, .dwell-sv-add-btn) {
+  background: linear-gradient(135deg, rgba(111, 78, 55, .96), rgba(111, 78, 55, .83));
+  color: #E5E4E2;
+  border-radius: 15px;
+  box-shadow: 0 5px 16px rgba(111, 78, 55, .15), inset 0 1px 0 rgba(255, 255, 255, .2);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+body.silkspire-glass :is(.button--secondary, .silkspire-card__cart, .slider-button, .dwell-sv-nav, .reviews-section__arrow) {
+  background: rgba(230, 224, 240, .76);
+  color: #6F4E37;
+  border: 1px solid rgba(255, 255, 255, .8);
+  border-radius: 15px;
+  box-shadow: var(--glass-shadow);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+body.silkspire-glass .button::after { border-radius: 15px; }
+body.silkspire-glass .utility-bar .slider-button { background: rgba(229, 228, 226, .12); color: #E5E4E2; box-shadow: none; border-color: rgba(229, 228, 226, .25); }
+body.silkspire-glass :is(.field__input, .select__select, .customer input, .quantity) { background: rgba(245, 242, 247, .67); color: #6F4E37; border-radius: 14px; }
+body.silkspire-glass :is(.field::after, .select::after, .quantity::after) { border-radius: 14px; }
+body.silkspire-glass .product-form__input input[type=radio] + label { background: rgba(230, 224, 240, .6); }
+body.silkspire-glass .product-form__input input[type=radio]:checked + label { background: #6F4E37; color: #E5E4E2; }
+body.silkspire-glass footer.footer {
+  background: linear-gradient(135deg, rgba(111, 78, 55, .94), rgba(111, 78, 55, .84));
+  border-top: 1px solid rgba(255, 255, 255, .4);
+  border-radius: 28px 28px 0 0;
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+}
+body.silkspire-glass footer .field__input { color: #E5E4E2; background: rgba(229, 228, 226, .12); }
+body.silkspire-glass footer .newsletter-form__field-wrapper .field__label { color: #E5E4E2; }
+@media (max-width: 749px) {
+  body.silkspire-glass { background-attachment: scroll; }
+  body.silkspire-glass .silkspire-card { padding: 8px; border-radius: 20px; }
+  body.silkspire-glass .silkspire-card__details { inset: 7px 7px auto; padding: 9px 10px; }
+  body.silkspire-glass .silkspire-card__title { font-size: 14px; }
+  body.silkspire-glass .silkspire-card .price { font-size: 13px; }
+}
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  body.silkspire-glass { --glass-surface: #ECE8EF; }
+  body.silkspire-glass .header-wrapper, body.silkspire-glass .silkspire-card__details { background: #E5E4E2; }
+}
