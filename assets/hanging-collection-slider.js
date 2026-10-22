@@ -34,11 +34,13 @@ if (!customElements.get('hanging-collection-slider')) {
         return;
       }
       this.slider = $(this.track);
+      const desktopCount = Math.min(this.items.length, Math.max(1, Math.min(6, Number(this.dataset.desktopCount) || 3)));
+      const mobileCount = Math.min(this.items.length, Math.max(1, Math.min(3, Number(this.dataset.mobileCount) || 1)));
       this.slider.on('init.hangingRail afterChange.hangingRail reInit.hangingRail breakpoint.hangingRail', (_event, slick) => {
         this.update(slick);
       });
       this.slider.slick({
-        slidesToShow: Math.min(3, this.items.length),
+        slidesToShow: desktopCount,
         slidesToScroll: 1,
         initialSlide: this.items.length > 2 ? 1 : 0,
         centerMode: this.items.length > 1,
@@ -56,8 +58,8 @@ if (!customElements.get('hanging-collection-slider')) {
         accessibility: true,
         adaptiveHeight: false,
         responsive: [
-          { breakpoint: 990, settings: { slidesToShow: Math.min(2, this.items.length), centerPadding: '32px' } },
-          { breakpoint: 750, settings: { slidesToShow: 1, centerPadding: '15%' } }
+          { breakpoint: 990, settings: { slidesToShow: Math.min(2, desktopCount), centerPadding: '32px' } },
+          { breakpoint: 750, settings: { slidesToShow: mobileCount, centerPadding: mobileCount === 1 ? '15%' : '12px' } }
         ]
       });
     }
