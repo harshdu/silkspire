@@ -123,6 +123,23 @@
         "slide_effect": "zoom"
       }
     },
+    "hanging_collection_slider": {
+      "type": "hanging-collection-slider",
+      "settings": {
+        "eyebrow": "NEW COLLECTION",
+        "subtitle": "THE SILKSPIRE EDIT",
+        "heading": "A little movement. A lot of elegance.",
+        "collection": "frontpage",
+        "product_limit": 8,
+        "desktop_count": 5,
+        "mobile_count": 1,
+        "button_label": "Shop the collection",
+        "sway": true,
+        "sway_speed": 7,
+        "background": "#e5e4e2",
+        "text_color": "#6f4e37"
+      }
+    },
     "collection_list_JFMgrA": {
       "type": "collection-list",
       "blocks": {
@@ -266,14 +283,14 @@
         "button_radius": 8,
         "button_text": "Add to Cart",
         "soldout_text": "Sold Out",
-        "background_color": "#E5E4E2",
-        "card_background": "#E5E4E2",
-        "card_border_color": "#6F4E37",
-        "text_color": "#6F4E37",
-        "muted_text_color": "#6F4E37",
-        "button_background": "#6F4E37",
-        "button_hover_background": "#6F4E37",
-        "button_text_color": "#E5E4E2",
+        "background_color": "#e5e4e2",
+        "card_background": "#e5e4e2",
+        "card_border_color": "#6f4e37",
+        "text_color": "#6f4e37",
+        "muted_text_color": "#6f4e37",
+        "button_background": "#6f4e37",
+        "button_hover_background": "#6f4e37",
+        "button_text_color": "#e5e4e2",
         "margin_top": 0,
         "margin_bottom": 30,
         "padding_top": 36,
@@ -342,7 +359,7 @@
       "name": "Category Image Grid",
       "settings": {
         "card_gap": 8,
-        "heading_color": "#6F4E37",
+        "heading_color": "#6f4e37",
         "heading_size": 48,
         "mobile_heading_size": 24
       }
@@ -473,12 +490,12 @@
         "autoplay": true,
         "autoplay_seconds": 3,
         "transition_speed": 500,
-        "background_color": "#E5E4E2",
-        "heading_color": "#6F4E37",
-        "text_color": "#6F4E37",
-        "star_color": "#6F4E37",
-        "frame_color": "#E5E4E2",
-        "controls_color": "#6F4E37",
+        "background_color": "#e5e4e2",
+        "heading_color": "#6f4e37",
+        "text_color": "#6f4e37",
+        "star_color": "#6f4e37",
+        "frame_color": "#e5e4e2",
+        "controls_color": "#6f4e37",
         "heading_size": 40,
         "review_size": 14,
         "name_size": 14,
@@ -499,21 +516,6 @@
         "padding_bottom": 60,
         "mobile_padding_top": 32,
         "mobile_padding_bottom": 32
-      }
-    },
-    "hanging_collection_slider": {
-      "type": "hanging-collection-slider",
-      "settings": {
-        "eyebrow": "NEW COLLECTION",
-        "subtitle": "THE SILKSPIRE EDIT",
-        "heading": "A little movement. A lot of elegance.",
-        "collection": "frontpage",
-        "product_limit": 8,
-        "button_label": "Shop the collection",
-        "sway": true,
-        "sway_speed": 7,
-        "background": "#E5E4E2",
-        "text_color": "#6F4E37"
       }
     }
   },
